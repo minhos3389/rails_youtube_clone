@@ -1,0 +1,21 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<%#  if @video.file ? 의미 : video 파일이 있을 때만 %>
+<%= video_tag @video.file.url, controls: true, class: "w-100" if @video.file? %>
+
+<%# 제목부분 %>
+<h4>
+  <%= @video.title %>
+</h4>
+<%# 작성자 이름 %>
+작성자: <%= @video.user.email %>
+<%# 설명 %>
+<%= simple_format @video.description %>
+<%# 조회수 to_i는 정수로 강제 변환 %>
+조회수<%= @video.view_count.to_i %>
+
+<%# 로그인 된 상태이고 &&은 and 의미 , 로그인한 user가 video의 작성자여야만 수정 삭제 보입니다. %>
+<% if current_user && (@video.user == current_user) %>
+  <%= link_to '수정', edit_video_path(@video), class: "btn btn-danger" %> 
+  <%= link_to '삭제', @video, method: :delete, data: {confirm: "정말로 삭제하시겠습니까?"}, class: "btn btn-outline-danger" %> 
+<% end %>
+<%= link_to '목록', videos_path, class: "btn btn-outline-danger" %>

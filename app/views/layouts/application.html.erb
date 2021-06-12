@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metube</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%# nav.navbar>a.navbar-brand %>
+    <nav class="navbar">
+      <a href="/" class="navbar-brand">
+        <%= fa_icon "youtube-play", class: "text-danger mr-1" %>
+        METUBE
+      </a>
+      <div>
+        <% if current_user %>
+          <%= link_to "업로드", new_video_path, class: "btn btn-danger" %>
+          <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger"%>
+        <% else %>
+          <%= link_to "로그인", new_user_session_path, class: "btn btn-outline-danger"%>
+          <%= link_to "회원가입", new_user_registration_path, class: "btn btn-outline-danger"%>
+        <% end %>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
