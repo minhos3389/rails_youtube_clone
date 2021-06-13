@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -17,6 +18,11 @@
         <%= fa_icon "youtube-play", class: "text-danger mr-1" %>
         METUBE
       </a>
+      <%# 검색 부분 %>
+      <%= form_tag videos_path, method: :get, class: "form-inline" do %>
+        <%= text_field_tag :q, params[:q], class: "form-control mr-2" %>
+        <%= submit_tag "검색", class: "btn btn-danger" %>
+      <% end %>
       <div>
         <% if current_user %>
           <%= link_to "업로드", new_video_path, class: "btn btn-danger" %>

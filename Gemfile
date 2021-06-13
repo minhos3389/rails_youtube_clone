@@ -29,6 +29,11 @@ gem 'bootstrap'
 gem 'font-awesome-rails'
 # 파일업로드 기능을 가진 carrierwave gem ,* carrierwave (2.2.2) ,Summary: Ruby file upload library ,Homepage: https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
+# Summary: A pagination engine plugin for Rails 4+ and other modern frameworks
+gem 'kaminari'
+# * bootstrap4-kaminari-views (1.0.1) Summary: Bootstrap 4 styling for Kaminari gem ,Homepage: http://github.com/KamilDzierbicki/bootstrap4-kaminari-views
+gem 'bootstrap4-kaminari-views'
+
 
 
 

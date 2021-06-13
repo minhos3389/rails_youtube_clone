@@ -16,6 +16,12 @@
 <%# 로그인 된 상태이고 &&은 and 의미 , 로그인한 user가 video의 작성자여야만 수정 삭제 보입니다. %>
 <% if current_user && (@video.user == current_user) %>
   <%= link_to '수정', edit_video_path(@video), class: "btn btn-danger" %> 
+  <%# remote: true 옵션은 이 link는 ajax링크라는 것을 나타냅니다. %>
   <%= link_to '삭제', @video, method: :delete, data: {confirm: "정말로 삭제하시겠습니까?"}, class: "btn btn-outline-danger" %> 
 <% end %>
 <%= link_to '목록', videos_path, class: "btn btn-outline-danger" %>
+<br><br>
+<%# id선택자를 통해서 ajax 수행 %>
+<div id="comments">
+ <%= render "videos/comments" %>
+</div>

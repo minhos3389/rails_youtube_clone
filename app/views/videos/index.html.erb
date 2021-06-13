@@ -1,3 +1,5 @@
 <div class="row">
   <%= render @videos %>
 </div>
+<%# 페이지네이션 기능 동작 코드 %>
+<%= paginate @videos , theme: 'twitter-bootstrap-4' %>

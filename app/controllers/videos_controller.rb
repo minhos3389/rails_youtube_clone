@@ -8,6 +8,11 @@ class VideosController < ApplicationController
   # GET /videos or /videos.json
   def index
     @videos = Video.all
+    # q 파라미터가 있을 경우에만 아래의 query가 날아갑니다.
+    # postgresql 에서는 대소문자 구별을 엄격히 하기 때문에 like 대신에 ilke를 사용해줍니다.
+    @videos = @videos.where("title like ?", "%#{params[:q]}%") if params[:q].present?
+    # page라는 파라미터를 받고, 한 페이지에 4개가 나오도록 설정
+    @videos = @videos.page(params[:page]).per(4)
   end
 
   # GET /videos/1 or /videos/1.json
